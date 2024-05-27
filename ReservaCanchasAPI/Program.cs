@@ -14,7 +14,6 @@ builder.Services.AddScoped<IRepository<TipoCancha>, Repository<TipoCancha>>();
 builder.Services.AddScoped<IRepository<Canchas>, Repository<Canchas>>();
 
 // Add services to the container.
-
 builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
@@ -34,21 +33,15 @@ if (app.Environment.IsDevelopment())
     {
         c.SwaggerEndpoint("/swagger/v1/swagger.json", "Reserva Canchas API V1");
     });
+    app.UseCors(x => x.AllowAnyOrigin().AllowAnyMethod().AllowAnyHeader());
+}
+else
+{
+    app.UseHttpsRedirection();
+    app.UseCors(x => x.WithOrigins("http://example.com").AllowAnyMethod().AllowAnyHeader());
 }
 
-app.UseDeveloperExceptionPage();
-app.UseSwagger();
-app.UseSwaggerUI(c =>
-{
-    c.SwaggerEndpoint("/swagger/v1/swagger.json", "Reserva CanchasAPIV1");
-});
-
 app.UseRouting();
-
-app.UseCors( x => x.AllowAnyOrigin());
-
-app.UseHttpsRedirection();
-
 app.UseAuthorization();
 
 app.UseEndpoints(endpoints =>

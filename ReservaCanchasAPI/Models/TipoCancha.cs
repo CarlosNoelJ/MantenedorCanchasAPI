@@ -8,6 +8,6 @@ namespace ReservaCanchasAPI.Models
         public string? TCanchaId { get; set; }
         public string? Descripcion { get; set; }
         public decimal MontoReserva { get; set; }
-        public required ICollection<Canchas> Canchas { get; set; }
+        //public required ICollection<Canchas> Canchas { get; set; }
     }
 }

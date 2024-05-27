@@ -36,7 +36,7 @@ namespace ReservaCanchasAPI.Controllers
             return CreatedAtAction(nameof(Get), new { id = tipoCancha.TCanchaId }, tipoCancha);
         }
 
-        [HttpPut]
+        [HttpPut("{id}")]
         public async Task<ActionResult> Put(string id, [FromBody] TipoCancha tipoCancha)
         {
             if (id != tipoCancha.TCanchaId)
@@ -45,7 +45,7 @@ namespace ReservaCanchasAPI.Controllers
             return NoContent();
         }
 
-        [HttpDelete]
+        [HttpDelete("{id}")]
         public async Task<ActionResult> Delete(string id)
         {
             await _repository.Delete(id);

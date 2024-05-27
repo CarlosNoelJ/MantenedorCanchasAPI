@@ -15,10 +15,10 @@ namespace ReservaCanchasAPI.Data
             modelBuilder.Entity<Canchas>().HasKey(c => c.CanchaId);
 
             // Configuración de las relaciones
-            modelBuilder.Entity<Canchas>()
-                .HasOne(c => c.TipoCancha)
-                .WithMany(tc => tc.Canchas)
-                .HasForeignKey(c => c.TCanchaId);
+            //modelBuilder.Entity<Canchas>()
+            //    .HasOne(c => c.TipoCancha);
+            //    .WithMany(tc => tc.Canchas);
+            //    .HasForeignKey(c => c.TCanchaId);
         }
 
         public DbSet<TipoCancha> TipoCancha { get; set; }
